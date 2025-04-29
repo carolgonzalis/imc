@@ -1,3 +1,2 @@
-essa é uma aula sobre Git
-
-esta é uma alteração dentro do reame
+# imc
+Criação de repositório para informações de IMC.
