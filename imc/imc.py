@@ -1,20 +1,34 @@
-# portfólio DEVELOPMENT TOOLS E CLOUD COMPUTING
-# Desenvolvendo um programa de calculo de Indice de Massa Muscular
+def calcular_imc(peso: float, altura: float) -> float:
+    """Calcula o IMC com base no peso (kg) e altura (m)."""
+    return peso / (altura ** 2)
 
-peso = float(input("Digite seu peso em Kg: "))
-altura = float(input("Digite sua altura em metros:"))
+def classificar_imc(imc: float) -> str:
+    """Classifica o IMC de acordo com a tabela da OMS."""
+    if imc < 18.5:
+        return "Abaixo do peso"
+    elif imc < 25:
+        return "Peso normal"
+    elif imc < 30:
+        return "Sobrepeso"
+    elif imc < 35:
+        return "Obesidade grau I"
+    elif imc < 40:
+        return "Obesidade grau II"
+    else:
+        return "Obesidade grau III"
 
-imc = peso / (altura ** 2)
 
-print(f"Seu IMC é: {imc}")
+def main():
+    try:
+        peso = float(input("Digite seu peso em kg: "))
+        altura = float(input("Digite sua altura em metros: "))
+        imc = calcular_imc(peso, altura)
+        classificacao = classificar_imc(imc)
 
-if imc < 18.5:
-    print("Classificação: Abaixo do peso!")
-elif 18.5 <= imc < 24.9:
-    print("Classificação: Peso normal!")
-elif 25 <= imc < 34.9:
-    print("Classificação: Obesidade grau 1!")
-elif 35 <= imc < 39.9:
-    print("Classificação: Obesidade grau 2!")
-else:
-    print("Classificação: Obesidade grau 3!")
+        print(f"\nSeu IMC é: {imc:.2f}")
+        print(f"Classificação: {classificacao}")
+    except ValueError:
+        print("Erro: Insira valores numéricos válidos para peso e altura.")
+
+if __name__ == "__main__":
+    main()
